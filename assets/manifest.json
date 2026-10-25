@@ -1,0 +1,38 @@
+{
+ "int_floor": {
+  "S": 2.0,
+  "area": "int"
+ },
+ "int_shell": {
+  "S": 2.0,
+  "area": "int"
+ },
+ "int_marble": {
+  "S": 2.0,
+  "area": "int"
+ },
+ "int_furn": {
+  "S": 2.0,
+  "area": "int"
+ },
+ "ext_street": {
+  "S": 1.0,
+  "area": "ext"
+ },
+ "ext_podium": {
+  "S": 1.0,
+  "area": "ext"
+ },
+ "ext_tower": {
+  "S": 1.0,
+  "area": "ext"
+ },
+ "ext_nb": {
+  "S": 1.0,
+  "area": "ext"
+ },
+ "ext_props": {
+  "S": 1.0,
+  "area": "ext"
+ }
+}

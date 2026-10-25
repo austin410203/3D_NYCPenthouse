@@ -1,0 +1,6 @@
+{
+  // Static assets-only Worker (Cloudflare Git-connected deploy runs `npx wrangler deploy`)
+  "name": "3d-nycpenthouse",
+  "compatibility_date": "2026-10-01",
+  "assets": { "directory": "." }
+}

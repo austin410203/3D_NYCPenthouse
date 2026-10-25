@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>The Aster · 157 W 57th St — 紐約頂樓豪宅導覽</title>
+<meta name="description" content="在瀏覽器裡走進紐約中城億萬富翁街上的頂樓豪宅：57 街街景、大廳、171 公尺高的頂樓客廳與中央公園夜景。">
+<meta property="og:title" content="The Aster · 紐約頂樓豪宅 3D 導覽">
+<meta property="og:description" content="Blender Cycles 烘焙光照＋three.js 第一人稱漫遊：從 57 街走進大廳，搭電梯上 171 公尺的頂樓。">
+<link rel="stylesheet" href="style.css">
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/",
+  "three-mesh-bvh": "https://cdn.jsdelivr.net/npm/three-mesh-bvh@0.8.3/build/index.module.js"
+} }
+</script>
+</head>
+<body>
+<canvas id="c"></canvas>
+
+<div id="loader">
+  <div class="brand">THE&nbsp;&nbsp;ASTER</div>
+  <div class="addr">157 West 57th Street · New York</div>
+  <div class="bar"><i id="bar"></i></div>
+  <div id="ltext">載入場景中…</div>
+  <button id="enter" hidden>進入導覽</button>
+</div>
+
+<header id="hud-top">
+  <div class="brand small">THE ASTER</div>
+  <div id="where">57 街</div>
+</header>
+
+<nav id="spots">
+  <button data-spot="street">57 街街景</button>
+  <button data-spot="lobby">大廳</button>
+  <button data-spot="living">頂樓客廳</button>
+  <button data-spot="view">中央公園窗景</button>
+  <button data-spot="fire">壁爐區</button>
+  <button data-spot="kitchen">廚房</button>
+  <button data-spot="park">中央公園</button>
+  <button data-spot="aerial">空拍</button>
+</nav>
+
+<div id="prompt" hidden></div>
+<div id="help">
+  <b>電腦</b>：點畫面鎖定滑鼠 · WASD／方向鍵移動 · Shift 快跑（整個曼哈頓都能走） · E 搭電梯 · F 飛行模式 · Esc 放開滑鼠<br>
+  <b>手機</b>：左下搖桿移動 · 右側拖曳轉頭 · 點「電梯」按鈕上下樓
+  <button id="help-x" aria-label="關閉">×</button>
+</div>
+<div id="joy"><i></i></div>
+<button id="elev-btn" hidden>電梯</button>
+<div id="fade"></div>
+
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
