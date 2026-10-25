@@ -158,6 +158,7 @@ function setupMaterials(root, area) {
 }
 
 function setupCity(root) {
+  root.traverse((o) => { if (o.isMesh) o.userData.srcMat = o.material.name || ''; });
   root.traverse((o) => {
     if (!o.isMesh) return;
     const name = o.material.name || '';
@@ -174,7 +175,7 @@ function setupCity(root) {
   // low Central Park South wall are skipped so you can stroll into the park.
   root.traverse((o) => {
     if (!o.isMesh) return;
-    const n = (o.material.name || '') + '|' + o.name;
+    const n = o.userData.srcMat + '|' + o.name;
     const skip = /Water|River|Hudson|EastRiver|Pond|Reservoir|Lake|LimestoneDark|ParkWall|Lamp|Light|Spire/i.test(n) || o.material.isMeshBasicMaterial && /Sodium|Head|Tail/.test(n);
     const i = colliders.indexOf(o);
     if (skip) { if (i >= 0) colliders.splice(i, 1); return; }
@@ -194,12 +195,12 @@ async function setupInstances() {
   // park trees
   const t = await loadBin('park_trees.bin');
   const n = t.length / 5;
-  const cMat = new THREE.MeshLambertMaterial({ vertexColors: false });
+  const cMat = new THREE.MeshLambertMaterial({ emissive: new THREE.Color(0.006, 0.006, 0.004) });
   const trees = new THREE.InstancedMesh(canopy.geometry, cMat, n);
   const tg = new THREE.CylinderGeometry(0.2, 0.3, 5.6, 7); tg.translate(0, 2.8, 0);
   const trunks = new THREE.InstancedMesh(tg, new THREE.MeshLambertMaterial({ color: 0x1a1612 }), n);
   const m4 = new THREE.Matrix4(), q = new THREE.Quaternion(), s = new THREE.Vector3(), col = new THREE.Color();
-  const tones = [[0.06, 0.07, 0.03], [0.08, 0.075, 0.03], [0.1, 0.07, 0.025], [0.11, 0.05, 0.02], [0.05, 0.065, 0.03]];
+  const tones = [[0.16, 0.19, 0.08], [0.22, 0.2, 0.08], [0.27, 0.19, 0.07], [0.3, 0.14, 0.05], [0.13, 0.17, 0.08]];
   for (let i = 0; i < n; i++) {
     const [x, y, z, rz, sc] = t.subarray(i * 5, i * 5 + 5);
     q.setFromAxisAngle(new THREE.Vector3(0, 1, 0), rz);
